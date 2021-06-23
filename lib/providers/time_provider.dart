@@ -20,12 +20,13 @@ class TimeProvider extends StateNotifier<AsyncValue<DayOfTimeBody>> {
 
   Future<void> _initialize() async {
     String _date = outputFormat.format(date);
+
     var result =
         await client.getTime(location.latitude, location.longitude, _date, 0);
     //print(result.results.sunrise);
     //print(state);
     state = AsyncValue<DayOfTimeBody>.data(result);
-    print(state);
+    //print(state);
   }
 
   DateFormat outputFormat = DateFormat('yyyy-MM-dd');

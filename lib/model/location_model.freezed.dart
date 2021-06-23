@@ -21,8 +21,8 @@ class _$LocationTearOff {
   const _$LocationTearOff();
 
   _Location call(
-      {@JsonKey(name: 'longitude') double longitude = 30.206731,
-      @JsonKey(name: 'latitude') double latitude = 32.7271631}) {
+      {@JsonKey(name: 'longitude') double longitude = 130.2067527099296,
+      @JsonKey(name: 'latitude') double latitude = 32.72725607444609}) {
     return _Location(
       longitude: longitude,
       latitude: latitude,
@@ -126,8 +126,8 @@ class __$LocationCopyWithImpl<$Res> extends _$LocationCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Location implements _Location {
   const _$_Location(
-      {@JsonKey(name: 'longitude') this.longitude = 30.206731,
-      @JsonKey(name: 'latitude') this.latitude = 32.7271631});
+      {@JsonKey(name: 'longitude') this.longitude = 130.2067527099296,
+      @JsonKey(name: 'latitude') this.latitude = 32.72725607444609});
 
   factory _$_Location.fromJson(Map<String, dynamic> json) =>
       _$_$_LocationFromJson(json);
