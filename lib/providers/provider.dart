@@ -12,9 +12,11 @@ import 'package:dio/dio.dart';
 final locationProvider = StateNotifierProvider<LocationProvider, Location>(
     (ref) => LocationProvider());
 
-final timeProvider = StateNotifierProvider.family<TimeProvider,
-    AsyncValue<DayOfTimeBody>, DateTime>((ref, dateTime) {
+final timeProvider =
+    StateNotifierProvider<TimeProvider, AsyncValue<DayOfTimeBody>>((ref) {
   final location = ref.watch(locationProvider);
-  final client = TimeClient(Dio());
+  final dateTime = DateTime.now();
+  final client = TimeClient(new Dio());
+
   return TimeProvider(client, location, dateTime);
 });

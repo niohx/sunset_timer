@@ -9,7 +9,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 class TimeProvider extends StateNotifier<AsyncValue<DayOfTimeBody>> {
-  TimeProvider(this.client, this.location, this.date) : super(AsyncLoading()) {
+  TimeProvider(this.client, this.location, this.date)
+      : super(AsyncValue.loading()) {
     _initialize();
   }
 
@@ -19,14 +20,12 @@ class TimeProvider extends StateNotifier<AsyncValue<DayOfTimeBody>> {
 
   Future<void> _initialize() async {
     String _date = outputFormat.format(date);
-    try {
-      final result =
-          await client.getTime(location.latitude, location.longitude, _date, 0);
-      print(result.results.sunrise);
-      state = AsyncValue.data(result);
-    } on Exception catch (e) {
-      state = AsyncValue.error(e);
-    }
+    var result =
+        await client.getTime(location.latitude, location.longitude, _date, 0);
+    //print(result.results.sunrise);
+    //print(state);
+    state = AsyncValue<DayOfTimeBody>.data(result);
+    print(state);
   }
 
   DateFormat outputFormat = DateFormat('yyyy-MM-dd');

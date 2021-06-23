@@ -32,7 +32,6 @@ class _TimeClient implements TimeClient {
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = DayOfTimeBody.fromJson(_result.data!);
-    // print(value);
     return value;
   }
 

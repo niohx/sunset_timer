@@ -40,10 +40,11 @@ class _HomePageBody extends HookWidget {
   _HomePageBody({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final _timeValue = useProvider(timeProvider(DateTime.now()));
+    final _timeValue = useProvider(timeProvider);
     //print(_timeValue);
     return _timeValue.when(
         data: (_time) {
+          print('data come');
           return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +60,7 @@ class _HomePageBody extends HookWidget {
             ),
           );
         },
-        error: (err, _) => Text(err.toString()),
-        loading: () => CircularProgressIndicator());
+        error: (err, _) => Center(child: Text(err.toString())),
+        loading: () => Center(child: CircularProgressIndicator()));
   }
 }
